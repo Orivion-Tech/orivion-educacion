@@ -1,0 +1,23 @@
+{
+  "date": "2024-10-15",
+  "items": [
+    {
+      "time": "08:30",
+      "title": "Homeroom Check-in",
+      "location": "Main Hall",
+      "type": "advisory"
+    },
+    {
+      "time": "10:00",
+      "title": "Algebra II Workshop",
+      "location": "Room 214",
+      "type": "class"
+    },
+    {
+      "time": "13:30",
+      "title": "Entrepreneurship Lab",
+      "location": "Innovation Hub",
+      "type": "lab"
+    }
+  ]
+}

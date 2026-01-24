@@ -1,0 +1,20 @@
+[
+  {
+    "id": "ti-course-401",
+    "name": "Cloud Architecture",
+    "teacher": "Dr. Rowan Kim",
+    "credits": 4
+  },
+  {
+    "id": "ti-course-402",
+    "name": "Applied Machine Learning",
+    "teacher": "Prof. Nadia Shaw",
+    "credits": 3
+  },
+  {
+    "id": "ti-course-403",
+    "name": "Security Operations",
+    "teacher": "Mr. Alex Nguyen",
+    "credits": 3
+  }
+]

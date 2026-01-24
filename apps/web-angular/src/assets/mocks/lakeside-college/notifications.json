@@ -1,0 +1,16 @@
+[
+  {
+    "id": "lc-note-1201",
+    "title": "Wellness fair registrations open",
+    "message": "Reserve a booth for the wellness fair by Friday.",
+    "read": false,
+    "createdAt": "2024-10-14T13:45:00Z"
+  },
+  {
+    "id": "lc-note-1202",
+    "title": "Library quiet hours",
+    "message": "Quiet hours begin at 8:00 PM during midterms.",
+    "read": true,
+    "createdAt": "2024-10-12T09:20:00Z"
+  }
+]

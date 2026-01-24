@@ -1,0 +1,23 @@
+[
+  {
+    "id": "nc-enr-5001",
+    "studentId": "nc-stu-1001",
+    "courseId": "nc-course-201",
+    "status": "active",
+    "progress": 0.82
+  },
+  {
+    "id": "nc-enr-5002",
+    "studentId": "nc-stu-1002",
+    "courseId": "nc-course-202",
+    "status": "active",
+    "progress": 0.68
+  },
+  {
+    "id": "nc-enr-5003",
+    "studentId": "nc-stu-1003",
+    "courseId": "nc-course-203",
+    "status": "needs-support",
+    "progress": 0.41
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "ti-lib-5001",
+    "title": "Cloud Architecture Reference",
+    "category": "labs",
+    "format": "pdf",
+    "updatedAt": "2024-09-30"
+  },
+  {
+    "id": "ti-lib-5002",
+    "title": "Cybersecurity Playbooks",
+    "category": "security",
+    "format": "pptx",
+    "updatedAt": "2024-10-03"
+  }
+]

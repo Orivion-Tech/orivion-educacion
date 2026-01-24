@@ -1,0 +1,23 @@
+{
+  "date": "2024-10-15",
+  "items": [
+    {
+      "time": "09:00",
+      "title": "Campus Safety Drill",
+      "location": "Lakeside Quad",
+      "type": "event"
+    },
+    {
+      "time": "11:00",
+      "title": "Corporate Finance Lecture",
+      "location": "Building B, Room 204",
+      "type": "class"
+    },
+    {
+      "time": "15:00",
+      "title": "Student Success Check-ins",
+      "location": "Advising Center",
+      "type": "advisory"
+    }
+  ]
+}

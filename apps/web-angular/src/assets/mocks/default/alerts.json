@@ -1,0 +1,16 @@
+[
+  {
+    "id": "nc-alert-9001",
+    "type": "attendance",
+    "message": "3 students flagged for repeated tardiness this week.",
+    "priority": "medium",
+    "createdAt": "2024-10-14T09:15:00Z"
+  },
+  {
+    "id": "nc-alert-9002",
+    "type": "finance",
+    "message": "Quarterly scholarship review deadline approaching.",
+    "priority": "low",
+    "createdAt": "2024-10-13T15:45:00Z"
+  }
+]

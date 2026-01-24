@@ -1,0 +1,16 @@
+[
+  {
+    "id": "lc-alert-9101",
+    "type": "finance",
+    "message": "Pending tuition payment reminders sent to 12 students.",
+    "priority": "high",
+    "createdAt": "2024-10-14T10:10:00Z"
+  },
+  {
+    "id": "lc-alert-9102",
+    "type": "events",
+    "message": "Homecoming week logistics review required.",
+    "priority": "medium",
+    "createdAt": "2024-10-13T16:30:00Z"
+  }
+]

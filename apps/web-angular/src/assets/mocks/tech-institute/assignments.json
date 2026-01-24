@@ -1,0 +1,16 @@
+[
+  {
+    "id": "ti-asm-9001",
+    "courseId": "ti-course-401",
+    "title": "Cloud Migration Plan",
+    "dueDate": "2024-10-21",
+    "status": "upcoming"
+  },
+  {
+    "id": "ti-asm-9002",
+    "courseId": "ti-course-402",
+    "title": "Model Evaluation Lab",
+    "dueDate": "2024-10-18",
+    "status": "in-progress"
+  }
+]
