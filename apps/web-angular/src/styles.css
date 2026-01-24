@@ -1,22 +1,7 @@
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-.app-shell {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.app-shell main {
-  flex: 1;
+:root {
+  font-family: 'Inter', sans-serif;
 }

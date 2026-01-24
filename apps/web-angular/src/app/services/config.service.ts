@@ -1,48 +1,34 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
 
 export interface AppConfig {
   apiUrl: string;
   useMocks: boolean;
-  institutionId?: string;
 }
 
-const DEFAULT_CONFIG: AppConfig = {
-  apiUrl: '',
-  useMocks: false,
-  institutionId: 'default'
-};
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ConfigService {
   private config: AppConfig | null = null;
 
   constructor(private http: HttpClient) {}
 
-  load(): Promise<void> {
-    return firstValueFrom(
-      this.http.get<AppConfig>('/assets/config.json').pipe(
-        catchError(() => this.http.get<AppConfig>('/assets/config.example.json')),
-        map((config) => ({
-          ...DEFAULT_CONFIG,
-          ...config,
-          institutionId: config.institutionId ?? DEFAULT_CONFIG.institutionId
-        }))
-      )
-    ).then((config) => {
-      this.config = config;
-    });
+  async load(): Promise<AppConfig> {
+    if (this.config) {
+      return this.config;
+    }
+    try {
+      this.config = await firstValueFrom(this.http.get<AppConfig>('assets/config.json'));
+    } catch {
+      this.config = await firstValueFrom(this.http.get<AppConfig>('assets/config.example.json'));
+    }
+    return this.config;
   }
 
-  getConfig(): AppConfig {
+  get snapshot(): AppConfig {
     if (!this.config) {
-      throw new Error('Config has not been loaded yet.');
+      throw new Error('Config not loaded');
     }
-
     return this.config;
   }
 }

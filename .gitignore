@@ -1,1 +1,3 @@
-/apps/web-angular/src/assets/config.local.json
+node_modules/
+dist/
+apps/web-angular/src/assets/config.local.json

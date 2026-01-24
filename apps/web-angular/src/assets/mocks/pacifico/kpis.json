@@ -1,0 +1,10 @@
+{
+  "completion": 0.74,
+  "activeUsers": 1280,
+  "avgScore": 82,
+  "riskDistribution": [
+    {"name":"Bajo","value":62},
+    {"name":"Medio","value":28},
+    {"name":"Alto","value":10}
+  ]
+}

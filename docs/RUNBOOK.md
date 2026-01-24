@@ -1,72 +1,44 @@
-# Runbook
+# RUNBOOK
 
-## Prerequisites
-
-- Node.js (latest LTS recommended).
-- npm (bundled with Node.js).
-
-## Application location
-
-The Angular app lives at:
-
-```
-apps/web-angular
-```
-
-## npm scripts
-
-The following scripts are defined in `apps/web-angular/package.json`:
-
-| Script | Command | Purpose |
-| --- | --- | --- |
-| `ng` | `ng` | Direct access to Angular CLI. |
-| `start` | `ng serve` | Run the dev server. |
-| `build` | `ng build` | Build the production bundle. |
-| `test` | `ng test` | Run unit tests. |
-
-### Typical local workflow
-
+## Desarrollo local
 ```bash
 cd apps/web-angular
 npm install
-npm run start
+npm run dev
 ```
 
-### Production build
-
+## Build
 ```bash
 cd apps/web-angular
-npm install
 npm run build
 ```
 
-## Configuration
-
-- Default config lives in `apps/web-angular/src/assets/config.example.json`.
-- Create `config.json` next to the example to set the API URL and institution ID.
-
-## Docker Compose (dev/prod)
-
-> **Current status**: No `docker-compose.yml` (or environment-specific compose files) are present in the repository.
-
-### Recommended dev compose layout
-
-If you add Docker Compose support, consider adding:
-
-- `docker-compose.dev.yml` for the Angular dev server.
-- `docker-compose.prod.yml` for a production build + static hosting (e.g., Nginx).
-
-### Example commands (once compose files exist)
-
+## Lint
 ```bash
-# Development
-docker compose -f docker-compose.dev.yml up --build
-
-# Production
-docker compose -f docker-compose.prod.yml up --build -d
+cd apps/web-angular
+npm run lint
 ```
 
-### Suggested container responsibilities
+## Unit tests
+```bash
+cd apps/web-angular
+npm run test
+```
 
-- **web**: Runs `ng serve` in development, or serves a production build in prod.
-- **api** (optional): Backend service that honors `X-Institution-Id`.
+## E2E
+```bash
+cd apps/web-angular
+npm run e2e
+```
+
+## Docker
+```bash
+docker compose up web-dev
+```
+
+```bash
+docker compose up web
+```
+
+Variables:
+- `API_URL` (para futuro backend, aún no usado por mocks).

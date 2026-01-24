@@ -1,22 +1,24 @@
 import { Component } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { ActivatedRoute } from '@angular/router';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @Component({
-  selector: 'app-teacher-course-dashboard',
+  selector: 'saa-teacher-course-dashboard',
   standalone: true,
-  imports: [MatCardModule],
+  imports: [NgxChartsModule],
   template: `
-    <mat-card class="p-6">
-      <h2 class="text-2xl font-semibold mb-2">Course {{ courseId }} Dashboard</h2>
-      <p class="text-slate-600">
-        Track learner progress, assignments, and announcements for this course.
-      </p>
-    </mat-card>
-  `
+    <h2 class="text-2xl font-semibold mb-4">Dashboard curso</h2>
+    <div class="h-64">
+      <ngx-charts-pie-chart
+        [results]="riskDistribution"
+        [legend]="true"
+      ></ngx-charts-pie-chart>
+    </div>
+  `,
 })
 export class TeacherCourseDashboardComponent {
-  readonly courseId = this.route.snapshot.paramMap.get('id') ?? 'unknown';
-
-  constructor(private readonly route: ActivatedRoute) {}
+  riskDistribution = [
+    { name: 'Bajo', value: 62 },
+    { name: 'Medio', value: 28 },
+    { name: 'Alto', value: 10 },
+  ];
 }

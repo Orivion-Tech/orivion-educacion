@@ -1,32 +1,25 @@
 # Multi-tenant Model
 
-## Tenant identity
+## Fuente de verdad
+- `apps/web-angular/src/assets/tenants.json`.
 
-- **Institution ID** is the primary tenant identifier.
-- The client loads configuration from `/assets/config.json` (or falls back to `config.example.json`) and stores the `institutionId` in the app config.
-- Session data stores the active institution ID alongside role and permission data.
+## Estructura
+```json
+{
+  "id": "andina",
+  "name": "Colegio Andino",
+  "theme": { "primary": "#1d4ed8", "logo": "assets/images/andino-logo.svg" },
+  "featureFlags": ["kpis", "risk"],
+  "enabledModules": ["student", "teacher", "parent", "admin"]
+}
+```
 
-## Tenant-based configuration
+## Sesión mock
+Se guarda en `localStorage` con la forma:
+```json
+{ "userId": "demo", "role": "student", "permissions": ["view:dashboard"], "institutionId": "andina", "isPlatformAdmin": false }
+```
 
-- `TenantFeatureService` maps institutions to feature flags (e.g., `analytics`, `family-portal`).
-- Tenants can expose branding and feature flags through `assets/tenants.json` (sample data includes branding colors, logo URLs, feature flags, and enabled modules).
-
-## Tenant-aware routing
-
-- **Tenant guard** blocks routes when the session institution does not match a required `institutionId` or when a tenant feature is not enabled.
-- **Role guard** and **permission guard** still apply, so tenant checks are additive to authentication.
-
-## Tenant-aware navigation
-
-- Sidebar items and topbar widgets are filtered by role, permissions, and tenant feature flags.
-- Platform-only items also require a platform admin session flag.
-
-## Tenant-aware API calls
-
-- All API requests include `X-Institution-Id` using the configured institution ID (defaults to `default`).
-- The API base URL is derived from the app config (`apiUrl`).
-
-## Data ownership assumptions
-
-- Session information is treated as tenant-scoped; switching tenants should reset or reload session data.
-- Feature flags are evaluated per request on the client to gate UI affordances.
+## Resolución
+- `TenantService` lee `tenants.json`.
+- `MenuService` filtra por rol y feature flags.

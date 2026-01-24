@@ -1,118 +1,82 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './components/login.component';
 import { authGuard } from './guards/auth.guard';
-import { permissionGuard } from './guards/permission.guard';
-import { roleGuard } from './guards/role.guard';
 import { tenantGuard } from './guards/tenant.guard';
+import { roleGuard } from './guards/role.guard';
+import { permissionGuard } from './guards/permission.guard';
+import { StudentHomeComponent } from './features/student/student-home.component';
+import { StudentSubjectsComponent } from './features/student/student-subjects.component';
+import { StudentActivityComponent } from './features/student/student-activity.component';
+import { StudentProgressComponent } from './features/student/student-progress.component';
+import { StudentOnboardingComponent } from './features/student/student-onboarding.component';
+import { ParentDashboardComponent } from './features/parent/parent-dashboard.component';
+import { ParentStudentComponent } from './features/parent/parent-student.component';
+import { ParentStudentTopicComponent } from './features/parent/parent-student-topic.component';
+import { TeacherCoursesComponent } from './features/teacher/teacher-courses.component';
+import { TeacherCourseDashboardComponent } from './features/teacher/teacher-course-dashboard.component';
+import { TeacherStudentComponent } from './features/teacher/teacher-student.component';
+import { TeacherLibraryComponent } from './features/teacher/teacher-library.component';
+import { AdminKpisComponent } from './features/admin/admin-kpis.component';
+import { AdminUsersComponent } from './features/admin/admin-users.component';
+import { AdminCoursesComponent } from './features/admin/admin-courses.component';
+import { PlatformInstitutionsComponent } from './features/platform/platform-institutions.component';
+import { PlatformInstitutionsNewComponent } from './features/platform/platform-institutions-new.component';
+import { PlatformImpersonateComponent } from './features/platform/platform-impersonate.component';
 
-export const appRoutes: Routes = [
-  {
-    path: '',
-    component: HomeComponent,
-    title: 'Orivion Educación'
-  },
-  {
-    path: 'login',
-    loadComponent: () =>
-      import('./features/auth/login.component').then((m) => m.LoginComponent),
-    title: 'Sign in'
-  },
-  {
-    path: 'tenant-select',
-    loadComponent: () =>
-      import('./features/tenants/tenant-select.component').then((m) => m.TenantSelectComponent),
-    title: 'Select tenant',
-    canActivate: [authGuard]
-  },
+export const routes: Routes = [
+  { path: 'login', component: LoginComponent },
   {
     path: 'student',
-    loadComponent: () =>
-      import('./features/student/student-shell.component').then(
-        (m) => m.StudentShellComponent
-      ),
-    title: 'Student Portal',
-    canActivate: [authGuard, roleGuard],
-    data: {
-      roles: ['student', 'teacher', 'admin']
-    }
-  },
-  {
-    path: 'student/home',
-    loadComponent: () =>
-      import('./features/student/student-home.component').then(
-        (m) => m.StudentHomeComponent
-      ),
-    title: 'Student Home',
-    canActivate: [authGuard, roleGuard],
-    data: {
-      roles: ['student', 'teacher', 'admin']
-    }
+    canActivate: [authGuard, tenantGuard, roleGuard],
+    data: { roles: ['student'] },
+    children: [
+      { path: 'home', component: StudentHomeComponent },
+      { path: 'subjects', component: StudentSubjectsComponent },
+      { path: 'activity/:id', component: StudentActivityComponent },
+      { path: 'progress', component: StudentProgressComponent },
+      { path: 'onboarding', component: StudentOnboardingComponent },
+    ],
   },
   {
     path: 'parent',
-    loadComponent: () =>
-      import('./features/parent/parent-shell.component').then(
-        (m) => m.ParentShellComponent
-      ),
-    title: 'Parent Portal',
-    canActivate: [authGuard, roleGuard, tenantGuard],
-    data: {
-      roles: ['parent', 'admin'],
-      tenantFeature: 'family-portal'
-    }
+    canActivate: [authGuard, tenantGuard, roleGuard],
+    data: { roles: ['parent'] },
+    children: [
+      { path: 'dashboard', component: ParentDashboardComponent },
+      { path: 'student/:id', component: ParentStudentComponent },
+      { path: 'student/:id/topic/:topicId', component: ParentStudentTopicComponent },
+    ],
   },
   {
     path: 'teacher',
-    loadComponent: () =>
-      import('./features/teacher/teacher-shell.component').then(
-        (m) => m.TeacherShellComponent
-      ),
-    title: 'Teacher Portal',
-    canActivate: [authGuard, roleGuard],
-    data: {
-      roles: ['teacher', 'admin']
-    }
-  },
-  {
-    path: 'teacher/course/:id/dashboard',
-    loadComponent: () =>
-      import('./features/teacher/teacher-course-dashboard.component').then(
-        (m) => m.TeacherCourseDashboardComponent
-      ),
-    title: 'Course Dashboard',
-    canActivate: [authGuard, roleGuard],
-    data: {
-      roles: ['teacher', 'admin']
-    }
+    canActivate: [authGuard, tenantGuard, roleGuard],
+    data: { roles: ['teacher'] },
+    children: [
+      { path: 'courses', component: TeacherCoursesComponent },
+      { path: 'course/:id/dashboard', component: TeacherCourseDashboardComponent },
+      { path: 'student/:id', component: TeacherStudentComponent },
+      { path: 'library', component: TeacherLibraryComponent },
+    ],
   },
   {
     path: 'admin',
-    loadComponent: () =>
-      import('./features/admin/admin-shell.component').then(
-        (m) => m.AdminShellComponent
-      ),
-    title: 'Admin Portal',
-    canActivate: [authGuard, roleGuard, permissionGuard, tenantGuard],
-    data: {
-      roles: ['admin'],
-      permissions: ['view:admin'],
-      tenantFeature: 'analytics'
-    }
+    canActivate: [authGuard, tenantGuard, roleGuard, permissionGuard],
+    data: { roles: ['admin'], permissions: ['manage:users'] },
+    children: [
+      { path: 'kpis', component: AdminKpisComponent },
+      { path: 'users', component: AdminUsersComponent },
+      { path: 'courses', component: AdminCoursesComponent },
+    ],
   },
   {
     path: 'platform',
-    loadComponent: () =>
-      import('./features/platform/platform-shell.component').then(
-        (m) => m.PlatformShellComponent
-      ),
-    title: 'Platform',
     canActivate: [authGuard, roleGuard],
-    data: {
-      roles: ['platform']
-    }
+    data: { roles: ['platform'] },
+    children: [
+      { path: 'institutions', component: PlatformInstitutionsComponent },
+      { path: 'institutions/new', component: PlatformInstitutionsNewComponent },
+      { path: 'impersonate/:tenantId', component: PlatformImpersonateComponent },
+    ],
   },
-  {
-    path: '**',
-    redirectTo: ''
-  }
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];

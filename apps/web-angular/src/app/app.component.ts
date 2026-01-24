@@ -1,33 +1,15 @@
 import { Component } from '@angular/core';
-import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { MatButtonModule } from '@angular/material/button';
-import { MatListModule } from '@angular/material/list';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MenuService } from './services/menu.service';
+import { RouterOutlet } from '@angular/router';
+import { AppShellComponent } from './components/app-shell.component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'saa-root',
   standalone: true,
-  imports: [
-    AsyncPipe,
-    NgForOf,
-    NgIf,
-    MatToolbarModule,
-    MatButtonModule,
-    MatListModule,
-    MatSidenavModule,
-    RouterLink,
-    RouterLinkActive,
-    RouterOutlet
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [RouterOutlet, AppShellComponent],
+  template: `
+    <saa-app-shell>
+      <router-outlet />
+    </saa-app-shell>
+  `,
 })
-export class AppComponent {
-  readonly sidebarItems$ = this.menuService.getSidebarItems();
-  readonly topbarWidgets$ = this.menuService.getTopbarWidgets();
-
-  constructor(private readonly menuService: MenuService) {}
-}
+export class AppComponent {}

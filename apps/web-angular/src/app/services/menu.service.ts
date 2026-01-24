@@ -1,108 +1,66 @@
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { SessionService } from './session.service';
-import { TenantFeatureService } from './tenant-feature.service';
+import { TenantService } from './tenant.service';
+import { MenuItem } from '../models/menu';
 
-export interface MenuItem {
-  label: string;
-  route: string;
-  roles?: string[];
-  permissions?: string[];
-  featureFlag?: string;
-  platformOnly?: boolean;
-}
-
-export interface MenuWidget {
-  label: string;
-  route: string;
-  roles?: string[];
-  permissions?: string[];
-  featureFlag?: string;
-}
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class MenuService {
-  private readonly sidebarItems: MenuItem[] = [
-    { label: 'Home', route: '/' },
-    { label: 'Student Portal', route: '/student', roles: ['student', 'teacher', 'admin'] },
-    { label: 'Parent Portal', route: '/parent', roles: ['parent', 'admin'], featureFlag: 'family-portal' },
-    { label: 'Teacher Portal', route: '/teacher', roles: ['teacher', 'admin'] },
-    {
-      label: 'Admin Portal',
-      route: '/admin',
-      roles: ['admin'],
-      permissions: ['view:admin']
-    },
-    {
-      label: 'Platform',
-      route: '/platform',
-      platformOnly: true
-    }
-  ];
+  private readonly menuItems = new BehaviorSubject<MenuItem[]>([]);
+  readonly menu$ = this.menuItems.asObservable();
 
-  private readonly topbarWidgets: MenuWidget[] = [
-    {
-      label: 'Reports',
-      route: '/admin',
-      permissions: ['view:reports'],
-      featureFlag: 'analytics'
-    },
-    {
-      label: 'Billing',
-      route: '/admin',
-      permissions: ['manage:billing'],
-      featureFlag: 'billing'
-    },
-    {
-      label: 'Staff',
-      route: '/admin',
-      permissions: ['manage:staff']
-    }
-  ];
-
-  constructor(
-    private readonly sessionService: SessionService,
-    private readonly tenantFeatureService: TenantFeatureService
-  ) {}
-
-  getSidebarItems(): Observable<MenuItem[]> {
-    return this.sessionService.session$.pipe(
-      map((session) =>
-        this.sidebarItems.filter((item) => this.isAllowed(item, session))
-      )
-    );
+  constructor(private session: SessionService, private tenant: TenantService) {
+    this.refresh();
   }
 
-  getTopbarWidgets(): Observable<MenuWidget[]> {
-    return this.sessionService.session$.pipe(
-      map((session) =>
-        this.topbarWidgets.filter((widget) => this.isAllowed(widget, session))
-      )
-    );
-  }
-
-  private isAllowed(
-    item: MenuItem | MenuWidget,
-    session: { role: string; permissions: string[]; institutionId: string; isPlatformAdmin: boolean }
-  ): boolean {
-    if ('platformOnly' in item && item.platformOnly && !session.isPlatformAdmin) {
-      return false;
+  refresh(): void {
+    const session = this.session.getSession();
+    const tenant = this.tenant.getTenant(session?.institutionId ?? '');
+    if (!session || !tenant) {
+      this.menuItems.next([]);
+      return;
     }
 
-    if (item.roles && !item.roles.includes(session.role) && !session.isPlatformAdmin) {
-      return false;
-    }
+    const items: MenuItem[] = [
+      {
+        label: 'Inicio',
+        route: '/student/home',
+        roles: ['student'],
+      },
+      {
+        label: 'Progreso',
+        route: '/student/progress',
+        roles: ['student'],
+      },
+      {
+        label: 'Dashboard Padre',
+        route: '/parent/dashboard',
+        roles: ['parent'],
+      },
+      {
+        label: 'Cursos Docente',
+        route: '/teacher/courses',
+        roles: ['teacher'],
+      },
+      {
+        label: 'KPIs',
+        route: '/admin/kpis',
+        roles: ['admin'],
+        feature: 'kpis',
+      },
+      {
+        label: 'Instituciones',
+        route: '/platform/institutions',
+        roles: ['platform'],
+      },
+    ];
 
-    if (item.permissions && !item.permissions.every((permission) => session.permissions.includes(permission))) {
-      return false;
-    }
+    const filtered = items.filter((item) => {
+      const roleMatch = item.roles.includes(session.role);
+      const featureMatch = item.feature ? tenant.featureFlags.includes(item.feature) : true;
+      return roleMatch && featureMatch;
+    });
 
-    if (item.featureFlag && !this.tenantFeatureService.hasFeature(session.institutionId, item.featureFlag)) {
-      return false;
-    }
-
-    return true;
+    this.menuItems.next(filtered);
   }
 }

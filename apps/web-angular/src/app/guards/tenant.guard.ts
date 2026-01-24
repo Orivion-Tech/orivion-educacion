@@ -1,22 +1,13 @@
-import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
+import { inject } from '@angular/core';
 import { SessionService } from '../services/session.service';
-import { TenantFeatureService } from '../services/tenant-feature.service';
+import { TenantService } from '../services/tenant.service';
 
-export const tenantGuard: CanActivateFn = (route) => {
-  const router = inject(Router);
+export const tenantGuard: CanActivateFn = () => {
   const session = inject(SessionService).getSession();
-  const tenantFeatureService = inject(TenantFeatureService);
-  const requiredInstitutionId = route.data?.['institutionId'] as string | undefined;
-  const requiredFeature = route.data?.['tenantFeature'] as string | undefined;
-
-  if (requiredInstitutionId && requiredInstitutionId !== session.institutionId) {
-    return router.createUrlTree(['/']);
+  const tenantService = inject(TenantService);
+  if (!session || !tenantService.getTenant(session.institutionId)) {
+    return inject(Router).createUrlTree(['/login']);
   }
-
-  if (requiredFeature && !tenantFeatureService.hasFeature(session.institutionId, requiredFeature)) {
-    return router.createUrlTree(['/']);
-  }
-
   return true;
 };
