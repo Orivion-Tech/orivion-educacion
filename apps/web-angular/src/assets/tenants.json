@@ -1,0 +1,47 @@
+[
+  {
+    "id": "north-campus",
+    "name": "North Campus Academy",
+    "branding": {
+      "primaryColor": "#1e40af",
+      "secondaryColor": "#f97316",
+      "logoUrl": "/assets/branding/north-campus/logo.svg"
+    },
+    "featureFlags": {
+      "enableScholarships": true,
+      "enableOnlinePayments": false,
+      "enableMessaging": true
+    },
+    "enabledModules": ["dashboard", "courses", "attendance", "messaging"]
+  },
+  {
+    "id": "lakeside-college",
+    "name": "Lakeside College",
+    "branding": {
+      "primaryColor": "#0f766e",
+      "secondaryColor": "#22c55e",
+      "logoUrl": "/assets/branding/lakeside/logo.svg"
+    },
+    "featureFlags": {
+      "enableScholarships": false,
+      "enableOnlinePayments": true,
+      "enableMessaging": true
+    },
+    "enabledModules": ["dashboard", "finance", "library", "events"]
+  },
+  {
+    "id": "tech-institute",
+    "name": "Orivion Tech Institute",
+    "branding": {
+      "primaryColor": "#7c3aed",
+      "secondaryColor": "#0ea5e9",
+      "logoUrl": "/assets/branding/orivion-tech/logo.svg"
+    },
+    "featureFlags": {
+      "enableScholarships": true,
+      "enableOnlinePayments": true,
+      "enableMessaging": false
+    },
+    "enabledModules": ["dashboard", "labs", "placements", "analytics"]
+  }
+]
