@@ -1,0 +1,22 @@
+<div class="app-shell">
+  <mat-toolbar color="primary" class="flex flex-wrap gap-3">
+    <span class="font-semibold">Orivion Educación</span>
+    <span class="flex-1"></span>
+    <nav class="flex flex-wrap gap-2">
+      <a mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a mat-button routerLink="/student" routerLinkActive="active">Student</a>
+      <a mat-button routerLink="/parent" routerLinkActive="active">Parent</a>
+      <a mat-button routerLink="/teacher" routerLinkActive="active">Teacher</a>
+      <a mat-button routerLink="/admin" routerLinkActive="active">Admin</a>
+      <a mat-button routerLink="/platform" routerLinkActive="active">Platform</a>
+    </nav>
+  </mat-toolbar>
+
+  <main class="px-6 py-8">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="px-6 py-6 text-sm text-slate-500 border-t border-slate-200">
+    Built with Angular 17, Angular Material, TailwindCSS, RxJS, and Chart.js.
+  </footer>
+</div>

@@ -1,0 +1,31 @@
+<section class="grid gap-6">
+  <header class="space-y-2">
+    <p class="uppercase tracking-[0.2em] text-xs text-slate-500">Orivion Educación</p>
+    <h1 class="text-3xl font-semibold">Unified learning platform overview</h1>
+    <p class="max-w-3xl text-slate-600">
+      This Angular 17+ starter includes Angular Material, TailwindCSS, RxJS, animations,
+      and Chart.js to visualize engagement across student, parent, teacher, admin, and
+      platform experiences.
+    </p>
+  </header>
+
+  <div class="grid gap-6 lg:grid-cols-2">
+    <mat-card class="p-5">
+      <h2 class="text-lg font-semibold mb-2">Daily engagement</h2>
+      <mat-divider class="mb-4"></mat-divider>
+      <div class="h-64">
+        <canvas #enrollmentChart></canvas>
+      </div>
+    </mat-card>
+
+    <mat-card class="p-5">
+      <h2 class="text-lg font-semibold mb-2">Next steps</h2>
+      <mat-divider class="mb-4"></mat-divider>
+      <ul class="list-disc pl-4 space-y-2 text-slate-600">
+        <li>Connect each portal shell with its feature modules.</li>
+        <li>Map student journeys, parent communications, and teacher workflows.</li>
+        <li>Expand admin analytics and platform configuration screens.</li>
+      </ul>
+    </mat-card>
+  </div>
+</section>
