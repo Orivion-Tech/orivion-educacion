@@ -1,0 +1,19 @@
+{
+  "summary": {
+    "low": 14,
+    "medium": 9,
+    "high": 2
+  },
+  "students": [
+    {
+      "studentId": "ti-stu-3002",
+      "riskLevel": "medium",
+      "signals": ["project backlog", "quiz remediation"]
+    },
+    {
+      "studentId": "ti-stu-3003",
+      "riskLevel": "medium",
+      "signals": ["attendance warning", "lab overdue"]
+    }
+  ]
+}

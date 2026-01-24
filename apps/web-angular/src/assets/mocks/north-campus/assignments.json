@@ -1,0 +1,16 @@
+[
+  {
+    "id": "nc-asm-7001",
+    "courseId": "nc-course-201",
+    "title": "Quadratic Functions Quiz",
+    "dueDate": "2024-10-18",
+    "status": "upcoming"
+  },
+  {
+    "id": "nc-asm-7002",
+    "courseId": "nc-course-202",
+    "title": "Storyboarding Project",
+    "dueDate": "2024-10-20",
+    "status": "in-progress"
+  }
+]

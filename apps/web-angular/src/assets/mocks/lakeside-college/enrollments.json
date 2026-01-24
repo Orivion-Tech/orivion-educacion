@@ -1,0 +1,23 @@
+[
+  {
+    "id": "lc-enr-6001",
+    "studentId": "lc-stu-2001",
+    "courseId": "lc-course-301",
+    "status": "active",
+    "progress": 0.76
+  },
+  {
+    "id": "lc-enr-6002",
+    "studentId": "lc-stu-2002",
+    "courseId": "lc-course-302",
+    "status": "active",
+    "progress": 0.88
+  },
+  {
+    "id": "lc-enr-6003",
+    "studentId": "lc-stu-2003",
+    "courseId": "lc-course-303",
+    "status": "monitor",
+    "progress": 0.59
+  }
+]

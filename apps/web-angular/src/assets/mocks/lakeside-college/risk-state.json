@@ -1,0 +1,14 @@
+{
+  "summary": {
+    "low": 22,
+    "medium": 5,
+    "high": 1
+  },
+  "students": [
+    {
+      "studentId": "lc-stu-2003",
+      "riskLevel": "medium",
+      "signals": ["incomplete labs", "advising outreach needed"]
+    }
+  ]
+}

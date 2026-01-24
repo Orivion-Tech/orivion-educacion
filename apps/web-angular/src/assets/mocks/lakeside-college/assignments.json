@@ -1,0 +1,16 @@
+[
+  {
+    "id": "lc-asm-8001",
+    "courseId": "lc-course-301",
+    "title": "Wetland Impact Report",
+    "dueDate": "2024-10-22",
+    "status": "upcoming"
+  },
+  {
+    "id": "lc-asm-8002",
+    "courseId": "lc-course-302",
+    "title": "Budget Variance Analysis",
+    "dueDate": "2024-10-19",
+    "status": "in-progress"
+  }
+]

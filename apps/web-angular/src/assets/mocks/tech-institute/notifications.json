@@ -1,0 +1,16 @@
+[
+  {
+    "id": "ti-note-1301",
+    "title": "Hackathon registrations",
+    "message": "Registrations close tomorrow for the AI hackathon.",
+    "read": false,
+    "createdAt": "2024-10-14T14:10:00Z"
+  },
+  {
+    "id": "ti-note-1302",
+    "title": "Equipment checkout update",
+    "message": "New GPU kits available for capstone teams.",
+    "read": true,
+    "createdAt": "2024-10-12T10:05:00Z"
+  }
+]

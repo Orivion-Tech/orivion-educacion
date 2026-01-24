@@ -1,0 +1,20 @@
+[
+  {
+    "id": "nc-course-201",
+    "name": "Algebra II",
+    "teacher": "Dr. Samantha Price",
+    "credits": 3
+  },
+  {
+    "id": "nc-course-202",
+    "name": "Digital Media",
+    "teacher": "Mr. Jonah Lee",
+    "credits": 2
+  },
+  {
+    "id": "nc-course-203",
+    "name": "Entrepreneurship",
+    "teacher": "Ms. Valeria Gomez",
+    "credits": 3
+  }
+]

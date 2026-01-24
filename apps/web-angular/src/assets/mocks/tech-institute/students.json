@@ -1,0 +1,23 @@
+[
+  {
+    "id": "ti-stu-3001",
+    "name": "Noah Brooks",
+    "grade": "Year 1",
+    "program": "Software Engineering",
+    "riskLevel": "low"
+  },
+  {
+    "id": "ti-stu-3002",
+    "name": "Priya Singh",
+    "grade": "Year 2",
+    "program": "Data Science",
+    "riskLevel": "medium"
+  },
+  {
+    "id": "ti-stu-3003",
+    "name": "Elias Romero",
+    "grade": "Year 3",
+    "program": "Cybersecurity",
+    "riskLevel": "medium"
+  }
+]

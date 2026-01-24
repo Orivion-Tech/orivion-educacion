@@ -1,0 +1,16 @@
+[
+  {
+    "id": "nc-note-1101",
+    "title": "Weekly staff briefing",
+    "message": "Join the leadership briefing at 4:00 PM in Conference A.",
+    "read": false,
+    "createdAt": "2024-10-14T12:00:00Z"
+  },
+  {
+    "id": "nc-note-1102",
+    "title": "Library hours extended",
+    "message": "Library will remain open until 7:00 PM during exam week.",
+    "read": true,
+    "createdAt": "2024-10-12T08:30:00Z"
+  }
+]

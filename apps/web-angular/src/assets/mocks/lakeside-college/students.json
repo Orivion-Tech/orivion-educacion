@@ -1,0 +1,23 @@
+[
+  {
+    "id": "lc-stu-2001",
+    "name": "Harper Wells",
+    "grade": "1st Year",
+    "program": "Environmental Science",
+    "riskLevel": "low"
+  },
+  {
+    "id": "lc-stu-2002",
+    "name": "Ravi Patel",
+    "grade": "2nd Year",
+    "program": "Finance",
+    "riskLevel": "low"
+  },
+  {
+    "id": "lc-stu-2003",
+    "name": "Zoe Carter",
+    "grade": "3rd Year",
+    "program": "Hospitality Management",
+    "riskLevel": "medium"
+  }
+]

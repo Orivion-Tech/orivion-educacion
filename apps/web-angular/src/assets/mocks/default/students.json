@@ -1,0 +1,23 @@
+[
+  {
+    "id": "nc-stu-1001",
+    "name": "Avery Johnson",
+    "grade": "10",
+    "program": "STEM Academy",
+    "riskLevel": "low"
+  },
+  {
+    "id": "nc-stu-1002",
+    "name": "Maya Chen",
+    "grade": "11",
+    "program": "Arts & Media",
+    "riskLevel": "medium"
+  },
+  {
+    "id": "nc-stu-1003",
+    "name": "Luis Martinez",
+    "grade": "12",
+    "program": "Business Leadership",
+    "riskLevel": "high"
+  }
+]

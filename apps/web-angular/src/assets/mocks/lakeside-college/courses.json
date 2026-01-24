@@ -1,0 +1,20 @@
+[
+  {
+    "id": "lc-course-301",
+    "name": "Coastal Ecology",
+    "teacher": "Dr. Ethan Moore",
+    "credits": 4
+  },
+  {
+    "id": "lc-course-302",
+    "name": "Corporate Finance",
+    "teacher": "Prof. Lucia Grant",
+    "credits": 3
+  },
+  {
+    "id": "lc-course-303",
+    "name": "Event Operations",
+    "teacher": "Ms. Abigail Brooks",
+    "credits": 2
+  }
+]

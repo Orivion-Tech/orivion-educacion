@@ -1,0 +1,23 @@
+{
+  "date": "2024-10-15",
+  "items": [
+    {
+      "time": "09:30",
+      "title": "Security Operations Briefing",
+      "location": "Lab 3",
+      "type": "lab"
+    },
+    {
+      "time": "12:00",
+      "title": "Career Coaching Sessions",
+      "location": "Placement Office",
+      "type": "advisory"
+    },
+    {
+      "time": "14:00",
+      "title": "Machine Learning Workshop",
+      "location": "Data Lab",
+      "type": "class"
+    }
+  ]
+}

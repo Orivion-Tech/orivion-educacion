@@ -1,0 +1,16 @@
+[
+  {
+    "id": "ti-alert-9201",
+    "type": "placement",
+    "message": "Three internship partners requested updated student portfolios.",
+    "priority": "medium",
+    "createdAt": "2024-10-14T11:20:00Z"
+  },
+  {
+    "id": "ti-alert-9202",
+    "type": "analytics",
+    "message": "Lab usage exceeded 90% capacity this week.",
+    "priority": "low",
+    "createdAt": "2024-10-13T17:05:00Z"
+  }
+]

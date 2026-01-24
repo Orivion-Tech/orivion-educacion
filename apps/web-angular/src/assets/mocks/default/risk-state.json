@@ -1,0 +1,19 @@
+{
+  "summary": {
+    "low": 18,
+    "medium": 7,
+    "high": 3
+  },
+  "students": [
+    {
+      "studentId": "nc-stu-1002",
+      "riskLevel": "medium",
+      "signals": ["attendance dip", "late assignments"]
+    },
+    {
+      "studentId": "nc-stu-1003",
+      "riskLevel": "high",
+      "signals": ["missing credits", "low assessment scores"]
+    }
+  ]
+}
