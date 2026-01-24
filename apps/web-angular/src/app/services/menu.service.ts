@@ -83,8 +83,11 @@ export class MenuService {
     );
   }
 
-  private isAllowed(item: MenuItem | MenuWidget, session: { role: string; permissions: string[]; institutionId: string; isPlatformAdmin: boolean }): boolean {
-    if (item.platformOnly && !session.isPlatformAdmin) {
+  private isAllowed(
+    item: MenuItem | MenuWidget,
+    session: { role: string; permissions: string[]; institutionId: string; isPlatformAdmin: boolean }
+  ): boolean {
+    if ('platformOnly' in item && item.platformOnly && !session.isPlatformAdmin) {
       return false;
     }
 

@@ -12,12 +12,37 @@ export const appRoutes: Routes = [
     title: 'Orivion Educación'
   },
   {
+    path: 'login',
+    loadComponent: () =>
+      import('./features/auth/login.component').then((m) => m.LoginComponent),
+    title: 'Sign in'
+  },
+  {
+    path: 'tenant-select',
+    loadComponent: () =>
+      import('./features/tenants/tenant-select.component').then((m) => m.TenantSelectComponent),
+    title: 'Select tenant',
+    canActivate: [authGuard]
+  },
+  {
     path: 'student',
     loadComponent: () =>
       import('./features/student/student-shell.component').then(
         (m) => m.StudentShellComponent
       ),
     title: 'Student Portal',
+    canActivate: [authGuard, roleGuard],
+    data: {
+      roles: ['student', 'teacher', 'admin']
+    }
+  },
+  {
+    path: 'student/home',
+    loadComponent: () =>
+      import('./features/student/student-home.component').then(
+        (m) => m.StudentHomeComponent
+      ),
+    title: 'Student Home',
     canActivate: [authGuard, roleGuard],
     data: {
       roles: ['student', 'teacher', 'admin']
@@ -43,6 +68,18 @@ export const appRoutes: Routes = [
         (m) => m.TeacherShellComponent
       ),
     title: 'Teacher Portal',
+    canActivate: [authGuard, roleGuard],
+    data: {
+      roles: ['teacher', 'admin']
+    }
+  },
+  {
+    path: 'teacher/course/:id/dashboard',
+    loadComponent: () =>
+      import('./features/teacher/teacher-course-dashboard.component').then(
+        (m) => m.TeacherCourseDashboardComponent
+      ),
+    title: 'Course Dashboard',
     canActivate: [authGuard, roleGuard],
     data: {
       roles: ['teacher', 'admin']
