@@ -1,5 +1,9 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { authGuard } from './guards/auth.guard';
+import { permissionGuard } from './guards/permission.guard';
+import { roleGuard } from './guards/role.guard';
+import { tenantGuard } from './guards/tenant.guard';
 
 export const appRoutes: Routes = [
   {
@@ -13,7 +17,11 @@ export const appRoutes: Routes = [
       import('./features/student/student-shell.component').then(
         (m) => m.StudentShellComponent
       ),
-    title: 'Student Portal'
+    title: 'Student Portal',
+    canActivate: [authGuard, roleGuard],
+    data: {
+      roles: ['student', 'teacher', 'admin']
+    }
   },
   {
     path: 'parent',
@@ -21,7 +29,12 @@ export const appRoutes: Routes = [
       import('./features/parent/parent-shell.component').then(
         (m) => m.ParentShellComponent
       ),
-    title: 'Parent Portal'
+    title: 'Parent Portal',
+    canActivate: [authGuard, roleGuard, tenantGuard],
+    data: {
+      roles: ['parent', 'admin'],
+      tenantFeature: 'family-portal'
+    }
   },
   {
     path: 'teacher',
@@ -29,7 +42,11 @@ export const appRoutes: Routes = [
       import('./features/teacher/teacher-shell.component').then(
         (m) => m.TeacherShellComponent
       ),
-    title: 'Teacher Portal'
+    title: 'Teacher Portal',
+    canActivate: [authGuard, roleGuard],
+    data: {
+      roles: ['teacher', 'admin']
+    }
   },
   {
     path: 'admin',
@@ -37,7 +54,13 @@ export const appRoutes: Routes = [
       import('./features/admin/admin-shell.component').then(
         (m) => m.AdminShellComponent
       ),
-    title: 'Admin Portal'
+    title: 'Admin Portal',
+    canActivate: [authGuard, roleGuard, permissionGuard, tenantGuard],
+    data: {
+      roles: ['admin'],
+      permissions: ['view:admin'],
+      tenantFeature: 'analytics'
+    }
   },
   {
     path: 'platform',
@@ -45,7 +68,11 @@ export const appRoutes: Routes = [
       import('./features/platform/platform-shell.component').then(
         (m) => m.PlatformShellComponent
       ),
-    title: 'Platform'
+    title: 'Platform',
+    canActivate: [authGuard, roleGuard],
+    data: {
+      roles: ['platform']
+    }
   },
   {
     path: '**',
