@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  web-dev:
+    build:
+      context: ./apps/web-angular
+      dockerfile: Dockerfile.dev
+    ports:
+      - "4200:4200"
+    environment:
+      apiUrl: "http://localhost:3000"
+  web:
+    build:
+      context: ./apps/web-angular
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      apiUrl: "http://localhost:3000"
