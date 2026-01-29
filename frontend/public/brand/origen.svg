@@ -1,0 +1,5 @@
+<svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="40" rx="12" fill="#F97316"/>
+  <circle cx="24" cy="20" r="8" stroke="white" stroke-width="3"/>
+  <text x="48" y="26" font-family="Arial" font-size="14" fill="white">Origen</text>
+</svg>

@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --brand-50: 210 100% 97%;
+  --brand-100: 210 95% 92%;
+  --brand-200: 210 90% 85%;
+  --brand-300: 210 85% 75%;
+  --brand-400: 210 80% 60%;
+  --brand-500: 210 85% 50%;
+  --brand-600: 215 90% 45%;
+  --brand-700: 220 85% 38%;
+  --brand-800: 224 75% 30%;
+  --brand-900: 225 70% 22%;
+  --surface-1: 210 30% 98%;
+  --surface-2: 210 25% 95%;
+  --surface-3: 210 20% 90%;
+  --text-1: 224 30% 12%;
+  --text-2: 220 15% 35%;
+}
+
+* {
+  border-color: hsl(var(--surface-3));
+}
+
+body {
+  @apply bg-surface-1 text-text-1 font-body antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-heading;
+}
+
+a {
+  @apply text-brand-700 hover:text-brand-800 transition-colors;
+}
+
+::selection {
+  background: hsl(var(--brand-200));
+}
+
+.container {
+  @apply mx-auto max-w-6xl px-6;
+}
+
+.surface-card {
+  @apply bg-white/80 backdrop-blur border border-white/60 shadow-sm;
+}
+
+.grid-ambient {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(15, 23, 42, 0.08) 1px, transparent 0);
+  background-size: 24px 24px;
+}

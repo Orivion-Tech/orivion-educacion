@@ -19,11 +19,14 @@ services:
       - db
 
   frontend:
-    build: ./frontend/app
+    build: ./frontend
     ports:
       - '4000:4000'
     depends_on:
       - backend
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://backend:3000
+      NEXT_PUBLIC_DEMO_MODE: "true"
 
 volumes:
   db_data:

@@ -48,11 +48,14 @@ services:
 
   frontend:
     build:
-      context: ./frontend/app
+      context: ./frontend
     container_name: education_core_web
     restart: always
     env_file:
       - .env
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://backend:3000
+      NEXT_PUBLIC_DEMO_MODE: "true"
     ports:
       - "${FRONTEND_PORT}:4000"
     depends_on:
