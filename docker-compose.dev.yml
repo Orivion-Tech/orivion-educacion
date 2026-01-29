@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: educacion
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    env_file:
+      - ./backend/.env.example
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend/app
+    ports:
+      - '4000:4000'
+    depends_on:
+      - backend
+
+volumes:
+  db_data:

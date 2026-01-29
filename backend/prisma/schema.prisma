@@ -1,0 +1,130 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Mappings to existing snake_case plural tables in the DB
+
+model Persona {
+  id               String   @id @default(uuid()) @map("id")
+  dni_pasaporte    String?  @unique @map("dni_pasaporte")
+  nombres          String   @map("nombres")
+  apellidos        String   @map("apellidos")
+  fecha_nacimiento DateTime? @map("fecha_nacimiento")
+  genero           String?  @map("genero")
+  metadata         Json?    @map("metadata")
+  usuarios         Usuario[]
+  actores          ActorDominio[]
+
+  @@map("personas")
+}
+
+model Usuario {
+  id                String   @id @default(uuid()) @map("id")
+  personaId         String   @map("persona_id")
+  username          String   @unique @map("username")
+  passwordHash      String   @map("password_hash")
+  dobleFactorActivo Boolean  @default(false) @map("doble_factor_activo")
+  persona           Persona  @relation(fields: [personaId], references: [id])
+
+  @@map("usuarios")
+}
+
+model Institucion {
+  id            String   @id @default(uuid()) @map("id")
+  nombre        String   @map("nombre")
+  ruc_tax_id    String?  @unique @map("ruc_tax_id")
+  configuracion Json?    @map("configuracion")
+  actores       ActorDominio[]
+
+  @@map("instituciones")
+}
+
+model ActorDominio {
+  id            String @id @default(uuid()) @map("id")
+  personaId     String @map("persona_id")
+  institucionId String @map("institucion_id")
+  tipo          String @map("tipo")
+  estado        String? @map("estado")
+  metadata      Json?   @map("metadata")
+  persona       Persona  @relation(fields: [personaId], references: [id])
+  institucion   Institucion @relation(fields: [institucionId], references: [id])
+  estudiantes   Estudiante[]
+
+  @@map("actores_dominio")
+}
+
+model Estudiante {
+  id              String @id @default(uuid()) @map("id")
+  actorId         String @unique @map("actor_id")
+  codigoMatricula String? @map("codigo_matricula")
+  actor           ActorDominio @relation(fields: [actorId], references: [id])
+  matriculas      Matricula[]
+
+  @@map("estudiantes")
+}
+
+model Matricula {
+  id          String @id @default(uuid()) @map("id")
+  estudianteId String @map("estudiante_id")
+  periodoId   String @map("periodo_id")
+  seccionId   String @map("seccion_id")
+  estado      String @map("estado")
+  estudiante  Estudiante @relation(fields: [estudianteId], references: [id])
+  calificaciones Calificacion[]
+
+  @@map("matriculas")
+}
+
+model Calificacion {
+  id          String @id @default(uuid()) @map("id")
+  matriculaId String @map("matricula_id")
+  valor       Float  @map("valor")
+  rubrica     Json?  @map("rubrica")
+  feedback    String? @map("feedback")
+  matricula   Matricula @relation(fields: [matriculaId], references: [id])
+
+  @@map("calificaciones")
+}
+
+model PoliticaPrivacidad {
+  id      String @id @default(uuid()) @map("id")
+  version String @map("version")
+  vigente Boolean @default(true) @map("vigente")
+
+  @@map("politicas_privacidad")
+}
+
+model Consentimiento {
+  id                 String @id @default(uuid()) @map("id")
+  personaMenorId     String @map("persona_menor_id")
+  actorResponsableId String @map("actor_responsable_id")
+  otorgado           Boolean @map("otorgado")
+  fechaOtorgado      DateTime? @map("fecha_otorgado")
+
+  @@map("consentimientos")
+}
+
+model AuditoriaLog {
+  id           String @id @default(uuid()) @map("id")
+  accion       String @map("accion")
+  valorAnterior Json? @map("valor_anterior")
+  valorNuevo    Json? @map("valor_nuevo")
+  creadoEn     DateTime @default(now()) @map("creado_en")
+
+  @@map("auditoria_logs")
+}
+
+model FeatureAprendizaje {
+  id           String @id @default(uuid()) @map("id")
+  featureCodigo String @map("feature_codigo")
+  valor        Float @map("valor")
+  anonimo      Boolean @default(true) @map("anonimo")
+
+  @@map("features_aprendizaje")
+}
