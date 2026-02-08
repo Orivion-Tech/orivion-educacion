@@ -1,0 +1,47 @@
+<div class="page">
+  <div class="page-header">
+    <div>
+      <h1>Matrículas</h1>
+      <p>Registro y seguimiento de matrículas.</p>
+    </div>
+  </div>
+
+  <section class="card">
+    <div class="card-head">
+      <h3>{{ editingId ? 'Editar matrícula' : 'Crear matrícula' }}</h3>
+      <button class="ghost" *ngIf="editingId" (click)="resetForm()">Cancelar</button>
+    </div>
+    <div class="form-grid">
+      <input type="text" placeholder="estudianteId" [(ngModel)]="estudianteId" />
+      <input type="text" placeholder="periodoId" [(ngModel)]="periodoId" />
+      <input type="text" placeholder="seccionId" [(ngModel)]="seccionId" />
+      <input type="text" placeholder="estado" [(ngModel)]="estado" />
+      <button class="primary" (click)="save()">{{ editingId ? 'Actualizar' : 'Crear' }}</button>
+    </div>
+    <p class="error" *ngIf="error">{{ error }}</p>
+  </section>
+
+  <section class="card">
+    <div class="table-actions">
+      <span class="muted">{{ enrollments.length }} matrículas</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Estudiante</th><th>Periodo</th><th>Sección</th><th>Estado</th><th>Acción</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of enrollments">
+          <td>{{ item.id }}</td>
+          <td>{{ item.estudianteId }}</td>
+          <td>{{ item.periodoId }}</td>
+          <td>{{ item.seccionId }}</td>
+          <td>{{ item.estado }}</td>
+          <td class="actions">
+            <button class="ghost" (click)="edit(item)">Editar</button>
+            <button class="ghost danger" (click)="remove(item.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

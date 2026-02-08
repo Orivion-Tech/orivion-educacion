@@ -1,0 +1,25 @@
+<div class="page">
+  <div class="page-header">
+    <div>
+      <h1>Matrículas</h1>
+      <p>Vista general de matrículas del curso.</p>
+    </div>
+  </div>
+
+  <section class="card">
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Estudiante</th><th>Periodo</th><th>Sección</th><th>Estado</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of enrollments">
+          <td>{{ item.id }}</td>
+          <td>{{ item.estudianteId }}</td>
+          <td>{{ item.periodoId }}</td>
+          <td>{{ item.seccionId }}</td>
+          <td>{{ item.estado }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

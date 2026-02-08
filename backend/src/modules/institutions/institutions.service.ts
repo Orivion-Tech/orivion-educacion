@@ -16,4 +16,12 @@ export class InstitutionsService {
   async create(data: { nombre: string; ruc_tax_id?: string }) {
     return this.prisma.institucion.create({ data });
   }
+
+  async update(id: string, data: { nombre?: string; ruc_tax_id?: string }) {
+    return this.prisma.institucion.update({ where: { id }, data });
+  }
+
+  async remove(id: string) {
+    return this.prisma.institucion.delete({ where: { id } });
+  }
 }

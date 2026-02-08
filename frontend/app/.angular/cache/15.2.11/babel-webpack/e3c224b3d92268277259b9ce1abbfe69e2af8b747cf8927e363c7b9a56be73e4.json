@@ -1,0 +1,1 @@
+{"ast":null,"code":"\"use strict\";\n\n// https://html.spec.whatwg.org/multipage/webappapis.html#windowtimers\nvar WindowTimers = {\n  setTimeout: setTimeout,\n  clearTimeout: clearTimeout,\n  setInterval: setInterval,\n  clearInterval: clearInterval\n};\nmodule.exports = WindowTimers;","map":null,"metadata":{},"sourceType":"script","externalDependencies":[]}

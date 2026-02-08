@@ -1,0 +1,1 @@
+{"ast":null,"code":"try {\n  var util = require('util');\n  /* istanbul ignore next */\n  if (typeof util.inherits !== 'function') throw '';\n  module.exports = util.inherits;\n} catch (e) {\n  /* istanbul ignore next */\n  module.exports = require('./inherits_browser.js');\n}","map":null,"metadata":{},"sourceType":"script","externalDependencies":[]}

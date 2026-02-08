@@ -11,6 +11,14 @@ export class StudentsService {
     });
   }
 
+  async update(id: string, data: { codigoMatricula?: string }) {
+    return this.prisma.estudiante.update({ where: { id }, data });
+  }
+
+  async remove(id: string) {
+    return this.prisma.estudiante.delete({ where: { id } });
+  }
+
   async findById(id: string) {
     return this.prisma.estudiante.findUnique({ where: { id } });
   }

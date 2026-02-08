@@ -1,0 +1,42 @@
+<div class="page">
+  <div class="page-header">
+    <div>
+      <h1>Instituciones</h1>
+      <p>Gestión de tenants, branding y configuración base.</p>
+    </div>
+  </div>
+
+  <section class="card">
+    <div class="card-head">
+      <h3>{{ editingId ? 'Editar institución' : 'Crear institución' }}</h3>
+      <button class="ghost" *ngIf="editingId" (click)="resetForm()">Cancelar</button>
+    </div>
+    <div class="form-grid">
+      <input type="text" placeholder="Nombre" [(ngModel)]="nombre" />
+      <input type="text" placeholder="RUC / Tax ID" [(ngModel)]="ruc" />
+      <button class="primary" (click)="save()">{{ editingId ? 'Actualizar' : 'Crear' }}</button>
+    </div>
+    <p class="error" *ngIf="error">{{ error }}</p>
+  </section>
+
+  <section class="card">
+    <div class="table-actions">
+      <span class="muted">{{ institutions.length }} instituciones</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Institución</th><th>RUC</th><th>Acción</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of institutions">
+          <td>{{ item.nombre }}</td>
+          <td>{{ item.ruc_tax_id || '-' }}</td>
+          <td class="actions">
+            <button class="ghost" (click)="edit(item)">Editar</button>
+            <button class="ghost danger" (click)="remove(item.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

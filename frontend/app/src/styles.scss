@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap');
+
+:root {
+  --primary: #0f766e;
+  --primary-600: #0f5b57;
+  --accent: #f59e0b;
+  --text-strong: #0f172a;
+  --text-muted: #475569;
+  --surface: #f6f7fb;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  --shadow-soft: 0 8px 18px rgba(15, 23, 42, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Work Sans', system-ui, sans-serif;
+  color: var(--text-strong);
+  background: var(--surface);
+}
+
+h1, h2, h3 {
+  font-family: 'Manrope', system-ui, sans-serif;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-600));
+  color: white;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  box-shadow: var(--shadow-soft);
+}
+
+.primary:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.error {
+  color: #b91c1c;
+  font-size: 12px;
+}

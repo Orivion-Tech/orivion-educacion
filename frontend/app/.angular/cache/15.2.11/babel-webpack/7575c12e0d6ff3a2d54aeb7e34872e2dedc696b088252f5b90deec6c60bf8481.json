@@ -1,0 +1,1 @@
+{"ast":null,"code":"'use strict';\n\nlet Node = require('./node');\nclass Comment extends Node {\n  constructor(defaults) {\n    super(defaults);\n    this.type = 'comment';\n  }\n}\nmodule.exports = Comment;\nComment.default = Comment;","map":null,"metadata":{},"sourceType":"script","externalDependencies":[]}

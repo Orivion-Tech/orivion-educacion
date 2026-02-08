@@ -1,0 +1,24 @@
+<div class="page">
+  <div class="page-header">
+    <div>
+      <h1>Calificaciones</h1>
+      <p>Resultados y observaciones por matrícula.</p>
+    </div>
+  </div>
+
+  <section class="card">
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Matrícula</th><th>Valor</th><th>Feedback</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of grades">
+          <td>{{ item.id }}</td>
+          <td>{{ item.matriculaId }}</td>
+          <td>{{ item.valor }}</td>
+          <td>{{ item.feedback || '-' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

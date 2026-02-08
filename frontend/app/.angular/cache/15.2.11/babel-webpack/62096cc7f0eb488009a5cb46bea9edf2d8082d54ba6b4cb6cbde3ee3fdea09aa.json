@@ -1,0 +1,1 @@
+{"ast":null,"code":"/* eslint-disable no-console */\n'use strict';\n\nlet printed = {};\nmodule.exports = function warnOnce(message) {\n  if (printed[message]) return;\n  printed[message] = true;\n  if (typeof console !== 'undefined' && console.warn) {\n    console.warn(message);\n  }\n};","map":null,"metadata":{},"sourceType":"script","externalDependencies":[]}

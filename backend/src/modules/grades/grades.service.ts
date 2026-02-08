@@ -11,6 +11,14 @@ export class GradesService {
     });
   }
 
+  async update(id: string, data: { valor?: number; feedback?: string; rubrica?: any }) {
+    return this.prisma.calificacion.update({ where: { id }, data });
+  }
+
+  async remove(id: string) {
+    return this.prisma.calificacion.delete({ where: { id } });
+  }
+
   async listByMatricula(matriculaId: string) {
     return this.prisma.calificacion.findMany({ where: { matriculaId } });
   }

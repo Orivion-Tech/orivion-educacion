@@ -1,0 +1,48 @@
+@import '../../ui/page-base';
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.form-grid input {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #f8fafc;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.table-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.ghost {
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.ghost.danger {
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+.muted {
+  color: var(--text-muted);
+}

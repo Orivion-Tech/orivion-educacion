@@ -261,6 +261,3 @@ erDiagram
     }
 ```
 
-## Próximos Pasos (Fase 2)
-
-Corresponde iniciar la implementación del Backend (Node.js/TypeScript) siguiendo la Arquitectura Hexagonal, mapeando estas entidades a código.

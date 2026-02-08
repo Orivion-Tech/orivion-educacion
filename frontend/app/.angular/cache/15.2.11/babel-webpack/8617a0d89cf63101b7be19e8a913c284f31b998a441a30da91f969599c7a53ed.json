@@ -1,0 +1,1 @@
+{"ast":null,"code":"/*\n * This file defines Domino behaviour that can be externally configured.\n * To change these settings, set the relevant global property *before*\n * you call `require(\"domino\")`.\n */\n\nexports.isApiWritable = !global.__domino_frozen__;","map":null,"metadata":{},"sourceType":"script","externalDependencies":[]}

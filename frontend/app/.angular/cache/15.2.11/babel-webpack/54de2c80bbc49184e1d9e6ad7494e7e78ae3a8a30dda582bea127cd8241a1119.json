@@ -1,0 +1,1 @@
+{"ast":null,"code":"\"use strict\";\n\nmodule.exports = {\n  Event: require('./Event'),\n  UIEvent: require('./UIEvent'),\n  MouseEvent: require('./MouseEvent'),\n  CustomEvent: require('./CustomEvent')\n};","map":null,"metadata":{},"sourceType":"script","externalDependencies":[]}

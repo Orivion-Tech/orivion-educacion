@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Put, Delete, UseGuards } from '@nestjs/common';
 import { InstitutionsService } from './institutions.service';
 import { JwtAuthGuard } from '../auth/jwt.guard';
 import { RolesGuard } from '../../common/guards/roles.guard';
@@ -25,5 +25,17 @@ export class InstitutionsController {
   @Roles('ADMIN','INSTITUTION_ADMIN')
   async create(@Body() body: { nombre: string; ruc_tax_id?: string }) {
     return this.svc.create(body);
+  }
+
+  @Put(':id')
+  @Roles('ADMIN','INSTITUTION_ADMIN')
+  async update(@Param('id') id: string, @Body() body: { nombre?: string; ruc_tax_id?: string }) {
+    return this.svc.update(id, body);
+  }
+
+  @Delete(':id')
+  @Roles('ADMIN','INSTITUTION_ADMIN')
+  async remove(@Param('id') id: string) {
+    return this.svc.remove(id);
   }
 }

@@ -16,6 +16,14 @@ export class EnrollmentsService {
     });
   }
 
+  async update(id: string, data: { estado?: string }) {
+    return this.prisma.matricula.update({ where: { id }, data });
+  }
+
+  async remove(id: string) {
+    return this.prisma.matricula.delete({ where: { id } });
+  }
+
   async findByStudent(estudianteId: string) {
     return this.prisma.matricula.findMany({ where: { estudianteId } });
   }

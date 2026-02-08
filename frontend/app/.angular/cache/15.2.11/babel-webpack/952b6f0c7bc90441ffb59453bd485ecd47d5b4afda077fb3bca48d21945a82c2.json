@@ -1,0 +1,1 @@
+{"ast":null,"code":"'use strict';\n\nmodule.exports.isClean = Symbol('isClean');\nmodule.exports.my = Symbol('my');","map":null,"metadata":{},"sourceType":"script","externalDependencies":[]}

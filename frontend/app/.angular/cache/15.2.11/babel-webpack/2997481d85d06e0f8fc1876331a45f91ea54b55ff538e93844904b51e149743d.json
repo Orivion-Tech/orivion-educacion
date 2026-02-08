@@ -1,0 +1,1 @@
+{"ast":null,"code":"/**\n * Detect Electron renderer process, which is node, but we should\n * treat as a browser.\n */\n\nif (typeof process !== 'undefined' && process.type === 'renderer') {\n  module.exports = require('./browser.js');\n} else {\n  module.exports = require('./node.js');\n}","map":null,"metadata":{},"sourceType":"script","externalDependencies":[]}

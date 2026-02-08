@@ -1,0 +1,43 @@
+<div class="page">
+  <div class="page-header">
+    <div>
+      <h1>Estudiantes</h1>
+      <p>Gestión de estudiantes y matrícula base.</p>
+    </div>
+  </div>
+
+  <section class="card">
+    <div class="card-head">
+      <h3>{{ editingId ? 'Editar estudiante' : 'Crear estudiante' }}</h3>
+      <button class="ghost" *ngIf="editingId" (click)="resetForm()">Cancelar</button>
+    </div>
+    <div class="form-grid">
+      <input type="text" placeholder="actorId" [(ngModel)]="actorId" [disabled]="editingId" />
+      <input type="text" placeholder="Código matrícula" [(ngModel)]="codigoMatricula" />
+      <button class="primary" (click)="save()">{{ editingId ? 'Actualizar' : 'Crear' }}</button>
+    </div>
+    <p class="error" *ngIf="error">{{ error }}</p>
+  </section>
+
+  <section class="card">
+    <div class="table-actions">
+      <span class="muted">{{ students.length }} estudiantes</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Nombre</th><th>Institución</th><th>Matrícula</th><th>Acción</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of students">
+          <td>{{ item.actor?.persona?.nombres }} {{ item.actor?.persona?.apellidos }}</td>
+          <td>{{ item.actor?.institucion?.nombre }}</td>
+          <td>{{ item.codigoMatricula || '-' }}</td>
+          <td class="actions">
+            <button class="ghost" (click)="edit(item)">Editar</button>
+            <button class="ghost danger" (click)="remove(item.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

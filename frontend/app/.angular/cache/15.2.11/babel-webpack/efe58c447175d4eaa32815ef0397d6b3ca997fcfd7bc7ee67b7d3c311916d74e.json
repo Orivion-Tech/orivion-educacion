@@ -1,0 +1,1 @@
+{"ast":null,"code":"'use strict';\n\nlet Stringifier = require('./stringifier');\nfunction stringify(node, builder) {\n  let str = new Stringifier(builder);\n  str.stringify(node);\n}\nmodule.exports = stringify;\nstringify.default = stringify;","map":null,"metadata":{},"sourceType":"script","externalDependencies":[]}

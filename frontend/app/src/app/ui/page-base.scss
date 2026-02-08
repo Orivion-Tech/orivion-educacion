@@ -1,0 +1,93 @@
+.page {
+  display: grid;
+  gap: 20px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.page-header p {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.grid.two {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid.three {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.card {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.card.highlight {
+  background: linear-gradient(135deg, #0f766e, #0ea5a4);
+  color: white;
+  border: none;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  font-size: 12px;
+}
+
+.progress {
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+.progress .bar {
+  height: 100%;
+  background: var(--primary);
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th {
+  text-align: left;
+  color: var(--text-muted);
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+
+td {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
